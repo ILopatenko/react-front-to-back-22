@@ -18,7 +18,6 @@ const App = () => {
   };
   const addFeedback = feedbackObject => {
     feedbackObject.id = uuidv4();
-    console.log(`You want to add a new feedback`, feedbackObject);
     setFeedback([feedbackObject, ...feedback]);
   };
   return (
