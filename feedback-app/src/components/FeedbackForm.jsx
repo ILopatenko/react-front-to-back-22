@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 import Card from './shared/Card';
 import Button from './shared/Button';
-
-import { useState } from 'react';
+import RatingSelect from './RatingSelect';
 const FeedbackForm = props => {
   const [text, setText] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
+  const [rating, setRating] = useState(10);
   const handleTextChange = e => {
     if (text.length === '') {
       setBtnDisabled(true);
@@ -24,7 +24,7 @@ const FeedbackForm = props => {
     <Card>
       <form>
         <h2>How would yoy rate service with us?</h2>
-        {/*  TODO: rating select component*/}
+        <RatingSelect select={rating => setRating(rating)} />
         <div className='input-group'>
           <input
             onChange={handleTextChange}
@@ -41,5 +41,4 @@ const FeedbackForm = props => {
     </Card>
   );
 };
-FeedbackForm.propTypes = {};
 export default FeedbackForm;
