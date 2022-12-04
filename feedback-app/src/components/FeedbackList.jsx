@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import FeedbackItem from './FeedbackItem';
-const FeedbackList = ({
-  feedback,
-  handleDelete,
-}) => {
+const FeedbackList = ({ feedback, handleDelete }) => {
   if (!feedback || feedback.lenght === 0) {
     return <p>No any Feedbacks yet</p>;
   }
@@ -27,7 +24,7 @@ FeedbackList.defaultProps = {
 FeedbackList.propTypes = {
   feedback: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       rating: PropTypes.number.isRequired,
     })

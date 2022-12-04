@@ -5,9 +5,7 @@ const FeedbackStats = ({ feedback }) => {
     feedback.reduce((acc, cur) => {
       return acc + cur.rating;
     }, 0) / feedback.length;
-  average = isNaN(average)
-    ? 0
-    : average.toFixed(1);
+  average = isNaN(average) ? 0 : average.toFixed(1);
   return (
     <div className='feedback-stats'>
       <h4>{feedback.length} reviews</h4>
@@ -18,7 +16,7 @@ const FeedbackStats = ({ feedback }) => {
 FeedbackStats.propTypes = {
   feedback: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       rating: PropTypes.number.isRequired,
     })
