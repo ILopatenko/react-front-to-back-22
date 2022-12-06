@@ -4,25 +4,12 @@ import { useContext } from 'react';
 import FeedbackItem from './FeedbackItem';
 import FeedbackContext from '../context/FeedbackContext';
 
-const FeedbackList = ({ handleDelete }) => {
+const FeedbackList = () => {
    const { feedback } = useContext(FeedbackContext);
    if (!feedback || feedback.lenght === 0) {
       return <p>No any Feedbacks yet</p>;
    }
-   //Default version without any animation
-   /* return (
-    <div className='feedback-list'>
-      {feedback.map(eachFeedback => {
-        return (
-          <FeedbackItem
-            key={eachFeedback.id}
-            item={eachFeedback}
-            handleDelete={handleDelete}
-          />
-        );
-      })}
-    </div>
-  ); */
+
    return (
       <div className='feedback-list'>
          <AnimatePresence>
@@ -37,7 +24,6 @@ const FeedbackList = ({ handleDelete }) => {
                      <FeedbackItem
                         key={eachFeedback.id}
                         item={eachFeedback}
-                        handleDelete={handleDelete}
                      />
                   </motion.div>
                );
