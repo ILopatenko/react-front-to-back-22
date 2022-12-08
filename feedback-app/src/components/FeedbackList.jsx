@@ -16,7 +16,7 @@ const FeedbackList = () => {
             {feedback.map(eachFeedback => {
                return (
                   <motion.div
-                     key={feedback.id}
+                     key={eachFeedback.id}
                      initial={{ opacity: 0 }}
                      animate={{ opacity: 1 }}
                      exit={{ opacity: 0 }}
