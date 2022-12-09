@@ -71,7 +71,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/feedback/6",
+							"raw": "http://localhost:5000/feedback/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -79,7 +79,36 @@
 							"port": "5000",
 							"path": [
 								"feedback",
-								"6"
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editByID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rtating\":23,\n    \"text\": \"postman\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/feedback/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"feedback",
+								"5"
 							]
 						}
 					},

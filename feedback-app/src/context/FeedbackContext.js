@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 const FeedbackContext = createContext();
 export const FeedbackProvider = ({ children }) => {
    const [isLoading, setIsLoading] = useState(true);
@@ -10,37 +9,52 @@ export const FeedbackProvider = ({ children }) => {
    });
    useEffect(() => {
       fetchFeedback();
-   }, []);
+   }, [feedback]);
    const fetchFeedback = async () => {
-      const response = await fetch(
-         `http://localhost:5000/feedback?_sord=id&_order=desc`
-      );
+      const response = await fetch(`/feedback?_sord=id&_order=desc`);
       const data = await response.json();
       setFeedback(data);
       setIsLoading(false);
    };
-   const deleteFeedback = id => {
+   const deleteFeedback = async id => {
       if (
          window.confirm(
             'Are you sure? You are going to delete a feedback'
          )
-      )
+      ) {
+         await fetch(`/feedback/${id}`, {
+            method: 'DELETE',
+         });
+
          setFeedback(feedback.filter(el => el.id !== id));
+      }
    };
-   const addFeedback = feedbackObject => {
-      feedbackObject.id = uuidv4();
-      setFeedback([feedbackObject, ...feedback]);
+
+   const addFeedback = async feedbackObject => {
+      const response = await fetch('/feedback', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(feedbackObject),
+      });
+      const data = await response.json();
+      setFeedback([data, ...feedback]);
    };
+
    const editFeedback = item => {
       setFeedbackEdit({ item, edit: true });
    };
-   const updateFeedback = (id, updItem) => {
+   const updateFeedback = async (id, updItem) => {
+      const response = await fetch(`/feedback/${id}`, {
+         method: 'PUT',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(updItem),
+      });
+      const data = response.json();
       setFeedback(
          feedback.map(item =>
-            item.id === id ? { ...item, ...updItem } : item
+            item.id === id ? { ...item, ...data } : item
          )
       );
-      setFeedbackEdit({ item: {}, edit: false });
    };
 
    return (
