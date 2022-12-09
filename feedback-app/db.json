@@ -1,0 +1,19 @@
+{
+  "feedback": [
+    {
+      "text": "dfggdffgdfgdfgdfg",
+      "rating": 5,
+      "id": 3
+    },
+    {
+      "text": "dfgdfgdfgdfgdfg",
+      "rating": 4,
+      "id": 4
+    },
+    {
+      "rtating": 23,
+      "text": "postman",
+      "id": 5
+    }
+  ]
+}
