@@ -7,35 +7,29 @@
 	},
 	"item": [
 		{
-			"name": "ch7",
+			"name": "github-finder",
 			"item": [
 				{
-					"name": "getAll",
+					"name": "getAllUsersTest",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:5000/feedback",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"feedback"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "createNew",
-					"request": {
-						"method": "POST",
-						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"rtating\":23,\n    \"text\": \"postman\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,72 +37,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/feedback",
-							"protocol": "http",
+							"raw": "{{host}}/users",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "5000",
 							"path": [
-								"feedback"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteByID",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"rtating\":23,\n    \"text\": \"postman\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:5000/feedback/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"feedback",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "editByID",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"rtating\":23,\n    \"text\": \"postman\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:5000/feedback/5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"feedback",
-								"5"
+								"users"
 							]
 						}
 					},
