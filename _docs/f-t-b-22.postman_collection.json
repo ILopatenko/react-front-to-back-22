@@ -20,7 +20,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "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",
+									"value": "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",
 									"type": "string"
 								}
 							]
@@ -43,6 +43,52 @@
 							],
 							"path": [
 								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/search/users?q=sdfsdf",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"search",
+								"users"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "sdfsdf"
+								}
 							]
 						}
 					},
