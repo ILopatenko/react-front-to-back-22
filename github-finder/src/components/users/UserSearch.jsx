@@ -3,7 +3,7 @@ import GithubContext from '../../context/github/GithubContex';
 
 const UserSearch = () => {
    const [text, setText] = useState('');
-   const { users, searchUsers } = useContext(GithubContext);
+   const { users, searchUsers, clearUsers } = useContext(GithubContext);
    const handleChange = e => {
       setText(e.target.value);
    };
@@ -13,10 +13,12 @@ const UserSearch = () => {
          alert('Please enter something');
       } else {
          searchUsers(text);
-         setText('');
       }
    };
    const handleClear = e => {
+      if (users.length !== 0) {
+         clearUsers();
+      }
       setText('');
    };
    return (
