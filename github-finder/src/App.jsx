@@ -4,6 +4,7 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
+import Alert from './components/layout/Alert';
 import { GithubProvider } from './context/github/GithubContex';
 import { AlertProvider } from './context/alert/AlertContext';
 
@@ -21,6 +22,7 @@ const App = () => {
                         <Route path='/notfound' element={<NotFound />} />
                         <Route path='/*' element={<NotFound />} />
                      </Routes>
+                     <Alert />
                   </main>
                   <Footer />
                </div>
