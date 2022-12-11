@@ -7,35 +7,29 @@
 	},
 	"item": [
 		{
-			"name": "ch7",
+			"name": "github-finder",
 			"item": [
 				{
-					"name": "getAll",
+					"name": "getAllUsersTest",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:5000/feedback",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"feedback"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "createNew",
-					"request": {
-						"method": "POST",
-						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"rtating\":23,\n    \"text\": \"postman\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,27 +37,38 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/feedback",
-							"protocol": "http",
+							"raw": "{{host}}/users",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "5000",
 							"path": [
-								"feedback"
+								"users"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "deleteByID",
+					"name": "searchUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "DELETE",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"rtating\":23,\n    \"text\": \"postman\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -71,44 +76,19 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/feedback/1",
-							"protocol": "http",
+							"raw": "{{host}}/search/users?q=sdfsdf",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "5000",
 							"path": [
-								"feedback",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "editByID",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"rtating\":23,\n    \"text\": \"postman\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+								"search",
+								"users"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "sdfsdf"
 								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:5000/feedback/5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"feedback",
-								"5"
 							]
 						}
 					},
