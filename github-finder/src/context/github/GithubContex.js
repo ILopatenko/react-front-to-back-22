@@ -7,6 +7,7 @@ export const GithubProvider = ({ children }) => {
    const initialState = {
       users: [],
       user: {},
+      repos: [],
       loading: false,
    };
    const [state, dispatch] = useReducer(githubReducer, initialState);
@@ -39,6 +40,20 @@ export const GithubProvider = ({ children }) => {
          dispatch({ type: 'GET_USER', payload: data });
       }
    };
+   const getUserRepos = async login => {
+      setLoading();
+      const response = await fetch(`${GITHUB_URL}/users/${login}/repos`, {
+         headers: {
+            Authorization: `token ${GITHUB_TOKEN}`,
+         },
+      });
+      if (response.status === '404') {
+         window.location = '/notfound';
+      } else {
+         const data = await response.json();
+         dispatch({ type: 'GET_REPOS', payload: data });
+      }
+   };
    return (
       <GithubContext.Provider
          value={{
@@ -48,6 +63,8 @@ export const GithubProvider = ({ children }) => {
             clearUsers,
             user: state.user,
             getUser,
+            getUserRepos,
+            repos: state.repos,
          }}
       >
          {children}

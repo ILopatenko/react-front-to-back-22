@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/layout/Spinner';
+import RepoList from '../components/repos/RepoList';
 const User = () => {
-   const { getUser, user, loading } = useContext(GithubContext);
+   const { getUser, user, loading, getUserRepos, repos } = useContext(GithubContext);
    const params = useParams();
    const {
       login,
@@ -26,6 +27,7 @@ const User = () => {
 
    useEffect(() => {
       getUser(params.login);
+      getUserRepos(params.login);
    }, []);
    if (loading) return <Spinner />;
    return (
@@ -59,7 +61,7 @@ const User = () => {
                         <a
                            href={html_url}
                            target='_blank'
-                           rel='noreffer'
+                           rel='noreferrer'
                            className='btn btn-otline'
                         >
                            Visit GitHub Profile
@@ -77,7 +79,7 @@ const User = () => {
                         <div className='stat'>
                            <div className='stat-title text-md'>Website:</div>
                            <div className='text-lg stat-value'>
-                              <a href={`htps://${blog}`} target='_blank' rel='noreffer'>
+                              <a href={`htps://${blog}`} target='_blank' rel='noreferrer'>
                                  {blog}
                               </a>
                            </div>
@@ -91,7 +93,7 @@ const User = () => {
                               <a
                                  href={`htps://twitter.com/${twitter_username}`}
                                  target='_blank'
-                                 rel='noreffer'
+                                 rel='noreferrer'
                               >
                                  {twitter_username}
                               </a>
@@ -131,6 +133,7 @@ const User = () => {
                   <div className='stat-value pr-5 text-3xl md:text-4xl'>{public_gists}</div>
                </div>
             </div>
+            <RepoList repos={repos} />
          </div>
       </>
    );
