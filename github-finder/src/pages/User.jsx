@@ -5,8 +5,9 @@ import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/layout/Spinner';
 import RepoList from '../components/repos/RepoList';
+import { getUserAndRepos } from '../context/github/GithubActions';
 const User = () => {
-   const { getUser, user, loading, getUserRepos, repos } = useContext(GithubContext);
+   const { user, loading, repos, dispatch } = useContext(GithubContext);
    const params = useParams();
    const {
       login,
@@ -26,9 +27,15 @@ const User = () => {
    } = user;
 
    useEffect(() => {
-      getUser(params.login);
-      getUserRepos(params.login);
+      const getUserData = async () => {
+         dispatch({ type: 'SET_LOADING' });
+         const userData = await getUserAndRepos(params.login);
+         dispatch({ type: 'GET_USER_AND_REPOS', payload: userData });
+      };
+
+      getUserData();
    }, []);
+
    if (loading) return <Spinner />;
    return (
       <>
