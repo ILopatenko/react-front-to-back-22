@@ -9,6 +9,8 @@ const UseRefExample1 = () => {
    };
    return (
       <div>
+         <h4>Example 1</h4>
+
          <form onSubmit={onSubmit}>
             <label htmlFor='name'>Name</label>
             <input type='text' ref={inputRef} id='name' className='form-control mb-2' />
@@ -16,6 +18,8 @@ const UseRefExample1 = () => {
                Submit
             </button>
          </form>
+         <hr />
+         <br />
       </div>
    );
 };
